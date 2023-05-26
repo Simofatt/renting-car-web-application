@@ -26,7 +26,7 @@ class Cars:
         cars_collection = db['voiture']
         reservations_collection = db['reservation']
 
-        etat_values = ["terminer", "en_attente","refuser"]
+        etat_values = ["accepter"]
         car_ids = reservations_collection.distinct("voiture_id", {"statut": {"$in": etat_values}})
 
         query = {"_id": {"$in": car_ids}}

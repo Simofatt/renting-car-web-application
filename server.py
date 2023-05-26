@@ -1,4 +1,4 @@
-from flask import Flask ,Response,request,render_template,redirect, url_for,jsonify
+from flask import Flask ,Response,request,render_template,session,redirect, url_for,jsonify
 import pymongo
 import json
 import os
@@ -8,6 +8,8 @@ app.static_folder = 'static'
 from bson.objectid import ObjectId
 from cars import Cars
 from werkzeug.utils import secure_filename
+from pymongo import MongoClient
+
 
 
 
@@ -170,6 +172,113 @@ def delete_car():
 
 
 
+############################ AHMED ##################################
+
+app.secret_key = 'HereWegoAgain'
+
+
+client = MongoClient('mongodb://localhost:27017')
+db = client['location_voitures']
+collection = db['client']
+
+
+@app.route('/AddNewClient')
+def hello():
+    return render_template('AddNewClient.html')
+
+@app.route('/add_client', methods=['POST'])
+def add_client():
+    client_data = {
+        'cin': request.form['CIN'],
+        'nom': request.form['nom'],
+        'prenom': request.form['prenom'],
+        'email': request.form['email'],
+        'tel': request.form['telephone'],
+        'adresse': request.form['adresse']
+    }
+    collection.insert_one(client_data)
+
+    session['success'] = True
+
+    return redirect(url_for('list_clients'))
+
+
+@app.route('/clients')
+def list_clients():
+    clients = collection.find()
+    return render_template('ClientList.html', clients=clients, client=None)
+
+
+
+
+
+@app.route('/deleteClient', methods=['POST'])
+def delete_client():
+
+    client_id = request.form.get('idClient')
+
+    print(f"Deleting client with ID: {client_id}")
+
+
+    result = collection.delete_one({'cin': client_id})
+
+    if result.deleted_count > 0:
+        return redirect(url_for('list_clients'))
+    else:
+        return 'Failed to delete the client or client not found.'
+
+
+
+
+@app.route('/add_new_client.html')
+def add_new_client():
+    success = session.pop('success', False)
+    if success:
+        return """
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                text: 'Client data inserted successfully.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>
+        """
+
+    return render_template('AddNewClient.html')
+@app.route('/modify_client', methods=['POST'])
+def modify_client():
+
+    print(request.form)  # Debugging line
+    cin = request.form['CIN']
+    nom = request.form['nom']
+    prenom = request.form['prenom']
+    email = request.form['email']
+    telephone = request.form['telephone']
+    adresse = request.form['adresse']
+
+    # Find the client with the matching CIN
+    query = {'cin': cin}
+    client = collection.find_one(query)
+
+    if client:
+        # Update the client data
+        update = {
+            '$set': {
+                'nom': nom,
+                'prenom': prenom,
+                'email': email,
+                'tel': telephone,
+                'adresse': adresse
+            }
+        }
+        collection.update_one(query, update)
+
+        return redirect(url_for('list_clients'))
+    else:
+        return 'Client not found'
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 
