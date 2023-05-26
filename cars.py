@@ -16,18 +16,18 @@ class Cars:
         # CONNECTION TO DB
         try:
             mongo = pymongo.MongoClient(host="localhost", port=27017, serverSelectionTimeoutMS=1000)
-            db = mongo.carsRent
+            db = mongo.location_voitures
             mongo.server_info()
             print("Connected to MongoDB")
         except Exception as e:
             print("ERROR - Cannot connect to MongoDB:", str(e))
             return
 
-        cars_collection = db['cars']
-        reservations_collection = db['reservations']
+        cars_collection = db['voiture']
+        reservations_collection = db['reservation']
 
-        etat_values = ["terminer", "en_attente"]
-        car_ids = reservations_collection.distinct("id_car", {"etat": {"$in": etat_values}})
+        etat_values = ["terminer", "en_attente","refuser"]
+        car_ids = reservations_collection.distinct("voiture_id", {"statut": {"$in": etat_values}})
 
         query = {"_id": {"$in": car_ids}}
         result = cars_collection.find(query)
@@ -35,13 +35,13 @@ class Cars:
         car_list = []
         for car in result:
             car_list.append({
-                "model": car["model"],
-                "brand": car["brand"],
+                "model": car["modele"],
+                "brand": car["marque"],
                 "matricule": car["matricule"],
-                "year": car["year"],
-                "price": car["price"],
-                "image": car["image"],
-                "id_user": car["id_user"]
+                "year": car["annee"],
+                "price": car["prix"],
+                "image": car["image"]
+                
             })
 
         return car_list
