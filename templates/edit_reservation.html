@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Reservation</title>
+</head>
+<body>
+    <h1>Edit Reservation</h1>
+
+    <form method="POST" action="/edit_reservation/{{ reservation_id }}">
+        <label for="date_debut">Start Date:</label>
+        <input type="date" id="date_debut" name="date_debut" value="{{ reservation.date_debut|default('') }}" required><br><br>
+
+        <label for="date_fin">End Date:</label>
+        <input type="date" id="date_fin" name="date_fin" value="{{ reservation.date_fin|default('') }}" required><br><br>
+
+        <label for="prix_reservation">Reservation Price:</label>
+        <input type="number" id="prix_reservation" name="prix_reservation" value="{{ reservation.prix_reservation|default('') }}" required><br><br>
+
+        <label for="statut">Status:</label>
+        <input type="text" id="statut" name="statut" value="{{ reservation.statut|default('') }}" required><br><br>
+
+        <input type="submit" value="Update Reservation">
+    </form>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Liste des managers</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="/static/DatatableAssets/css/font-face.css" rel="stylesheet" media="all">
+    <link href="/static/DatatableAssets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/static/DatatableAssets/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/static/DatatableAssets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet"
+        media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="/static/DatatableAssets/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- /static/DatatableAssets/vendor CSS-->
+    <link href="/static/DatatableAssets/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/static/DatatableAssets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
+        rel="stylesheet" media="all">
+    <link href="/static/DatatableAssets/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="/static/DatatableAssets/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/static/DatatableAssets/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="/static/DatatableAssets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/static/DatatableAssets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="/static/DatatableAssets/css/theme.css" rel="stylesheet" media="all">
+
+</head>
+<style>
+    .close {
+        color: #aaa;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    /* Modal styling */
+    .modal {
+        display: none;
+        /* Hide the modal by default */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Overlay background */
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+
+<body class="animsition">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white flex-column border-0  ">
+        <div class="container-fluid">
+            <div class="w-100">
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
+
+                    <!-- Logo-->
+                    <a class="navbar-brand fw-bold fs-3 m-0 p-0 flex-shrink-0 order-0" href="/cars">
+                        <div class="d-flex align-items-center">
+                            <svg class="f-w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.53 72.26">
+                                <path
+                                    d="M10.43,54.2h0L0,36.13,10.43,18.06,20.86,0H41.72L10.43,54.2Zm67.1-7.83L73,54.2,68.49,62,45,48.47,31.29,72.26H20.86l-5.22-9L52.15,0H62.58l5.21,9L54.06,32.82,77.53,46.37Z"
+                                    fill="currentColor" fill-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </a>
+                    <!-- / Logo-->
+
+                    <!-- Navbar Icons-->
+                    <ul class="list-unstyled mb-0 d-flex align-items-center order-1 order-lg-2 nav-sidelinks">
+
+
+                        <!-- Navbar Search-->
+                        <li class="d-none d-sm-block">
+                            <a href="/logout" class="nav-link text-body search-trigger cursor-pointer">Logout</a>
+
+
+
+                        </li>
+                        <!-- /Navbar Search-->
+
+                        <!-- Navbar Login-->
+                        <li class="ms-1 d-none d-lg-inline-block">
+                            <a class="nav-link text-body" href="/dashboardTest">
+                                Dashboard
+                            </a>
+                        </li>
+                        <!-- /Navbar Login-->
+
+
+                    </ul>
+                    <!-- Navbar Icons-->
+
+                    <!-- Main Navigation-->
+                    <div class="flex-shrink-0 collapse navbar-collapse navbar-collapse-light w-auto flex-grow-1 order-2 order-lg-1"
+                        id="navbarNavDropdown">
+
+                        <!-- Menu-->
+                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+                            <li class="nav-item dropdown">
+                                <a href="/clients" class="nav-link dropdown-toggle" role="button">
+                                    Gestion Clients
+                                </a>
+
+                            </li>
+                            <li class=" nav-item">
+                                <a class="nav-link" href="/gestion_reservations" role="button">
+                                    Gestion Réservations
+                                </a>
+                            </li>
+                            <li class=" nav-item">
+                                <a class="nav-link" href="/manage_cars" role="button">
+                                    Gestion voitures
+                                </a>
+                            </li>
+
+                            {% if session.get('role') == 'admin' %}
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Gestion Users
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/admin">Admin</a></li>
+                                    <li><a class="dropdown-item" href="/manager">Manager</a></li>
+
+                                </ul>
+                            </li>
+                            {% endif %}
+
+
+
+                        </ul> <!-- / Menu-->
+
+                    </div>
+                    <!-- / Main Navigation-->
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.html">
+                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- DATA TABLE -->
+
+                                <div class="table-data__tool">
+                                    <div class="table-data__tool-left">
+                                        <h3 class="title-5 m-b-35">Liste des managers</h3>
+
+                                    </div>
+                                    <div class="table-data__tool-right">
+                                        <a href="{{ url_for('addManager') }}"
+                                            class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                            <i class="zmdi zmdi-plus"></i> Ajouter Un Nouveau Manager
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="table-responsive table-responsive-data2">
+                                    <table class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                <th>CIN</th>
+                                                <th>Nom</th>
+                                                <th>Prenom</th>
+                                                <th>Email</th>
+                                                <th>Telephone</th>
+                                                <th>Address</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for client in clients %}
+                                            <tr class="tr-shadow">
+                                                <td>{{ client._id }} </td>
+                                                <td>{{ client.nom }} </td>
+                                                <td> {{ client.prenom }}</td>
+                                                <td>
+                                                    <span class="block-email">{{ client.email }}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="block-email">{{ client.tel }}</span>
+                                                </td>
+                                                <td>{{ client.ville }}</td>
+
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <button class="item" data-toggle="tooltip" data-placement="top"
+                                                            title="Reserver pour ce client">
+                                                            <i class="zmdi zmdi-mail-send"></i>
+                                                        </button>
+
+
+
+                                                        <input type="hidden" name="idClient" value="{{ client._id }}">
+                                                        <button class="item" data-toggle="tooltip" data-placement="top"
+                                                            title="Modifier"
+                                                            onclick="showModal(); fillModalInputs('{{ client._id }}','{{ client.nom }}', '{{ client.prenom }}', '{{ client.email }}', '{{ client.tel }}', '{{ client.ville }}')">
+                                                            <i class="zmdi zmdi-edit"></i>
+                                                        </button>
+
+
+
+                                                        <form method="POST" action="/deleteManager">
+                                                            <input type="hidden" name="idClient"
+                                                                value="{{ client._id }}">
+                                                            <button class="item" data-toggle="tooltip"
+                                                                data-placement="top" title="Supprimer" type="submit">
+                                                                <i class="zmdi zmdi-delete"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="spacer"></tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+                                <!-- END DATA TABLE -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <!-- Form to modify client information -->
+            <form method="POST" action="{{ url_for('modify_manager') }}">
+                <div class="form-group">
+                    <label class="form-label" for="register-id">CIN</label>
+
+                    <input type="text" name="CIN" class="form-control" id="register-CIN" placeholder="Entrer CIN"
+                        readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="register-nom">Nom</label>
+                    <input type="text" class="form-control" id="register-nom" name="nom" placeholder="Entrer Nom">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="register-prenom">Prenom</label>
+                    <input type="text" class="form-control" id="register-prenom" name="prenom"
+                        placeholder="Enter Prenom">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="register-email">Adresse email</label>
+                    <input type="email" class="form-control" id="register-email" name="email"
+                        placeholder="Entrer un email">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="register-telephone">Telephone</label>
+                    <input type="text" class="form-control" id="register-telephone" name="telephone"
+                        placeholder="Entrer numero telephone">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="register-adresse">Adresse</label>
+                    <input type="text" class="form-control" id="register-adresse" name="ville"
+                        placeholder="Entrer adresse">
+                </div>
+                <button type="submit" class="btn btn-dark d-block w-100 my-4">Modifier Manager</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Jquery JS-->
+    <script src="/static/DatatableAssets/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="/static/DatatableAssets/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/static/DatatableAssets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="/static/DatatableAssets/vendor/slick/slick.min.js">
+    </script>
+    <script src="/static/DatatableAssets/vendor/wow/wow.min.js"></script>
+    <script src="/static/DatatableAssets/vendor/animsition/animsition.min.js"></script>
+    <script src="/static/DatatableAssets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="/static/DatatableAssets/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="/static/DatatableAssets/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="/static/DatatableAssets/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="/static/DatatableAssets/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/static/DatatableAssets/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="/static/DatatableAssets/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="/static/DatatableAssets/js/main.js"></script>
+    <script>
+        function fillModalInputs(CIN, nom, prenom, email, telephone, adresse) {
+            document.getElementById("register-CIN").value = CIN;
+            document.getElementById("register-nom").value = nom;
+            document.getElementById("register-prenom").value = prenom;
+            document.getElementById("register-email").value = email;
+            document.getElementById("register-telephone").value = telephone;
+            document.getElementById("register-adresse").value = adresse;
+        }
+
+        function showModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Wait for the DOM to be fully loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the update form element
+            var updateForm = document.getElementById("modifyClientForm");
+
+            // Add an event listener to the form's submit event
+            updateForm.addEventListener("submit", function (event) {
+                // Prevent the default form submission
+                event.preventDefault();
+
+                // Perform any additional processing or validation here
+
+                // Close the modal after the form is submitted
+                closeModal();
+
+                // Submit the form programmatically
+                updateForm.submit();
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+<!-- end document-->

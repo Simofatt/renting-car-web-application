@@ -45,7 +45,7 @@
     </noscript>
 
     <!-- Page Title -->
-    <title>OldSkool | Bootstrap 5 HTML Template</title>
+
 
 </head>
 
@@ -73,127 +73,24 @@
                     <!-- Navbar Icons-->
                     <ul class="list-unstyled mb-0 d-flex align-items-center order-1 order-lg-2 nav-sidelinks">
 
-                        <!-- Mobile Nav Toggler-->
-                        <li class="d-lg-none">
-                            <span class="nav-link text-body d-flex align-items-center cursor-pointer"
-                                data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                                aria-controls="navbarNavDropdown" aria-expanded="false"
-                                aria-label="Toggle navigation"><i class="ri-menu-line ri-lg me-1"></i> Menu</span>
-                        </li>
-                        <!-- /Mobile Nav Toggler-->
 
                         <!-- Navbar Search-->
                         <li class="d-none d-sm-block">
-                            <span class="nav-link text-body search-trigger cursor-pointer">Search</span>
+                            <a href="/logout" class="nav-link text-body search-trigger cursor-pointer">Logout</a>
 
-                            <!-- Search navbar overlay-->
-                            <div class="navbar-search d-none">
-                                <div class="input-group mb-3 h-100">
-                                    <span class="input-group-text px-4 bg-transparent border-0"><i
-                                            class="ri-search-line ri-lg"></i></span>
-                                    <input type="text" class="form-control text-body bg-transparent border-0"
-                                        placeholder="Enter your search terms...">
-                                    <span
-                                        class="input-group-text px-4 cursor-pointer disable-child-pointer close-search bg-transparent border-0"><i
-                                            class="ri-close-circle-line ri-lg"></i></span>
-                                </div>
-                            </div>
-                            <div class="search-overlay"></div>
-                            <!-- / Search navbar overlay-->
+
 
                         </li>
                         <!-- /Navbar Search-->
 
                         <!-- Navbar Login-->
                         <li class="ms-1 d-none d-lg-inline-block">
-                            <a class="nav-link text-body" href="./login.html">
-                                Account
+                            <a class="nav-link text-body" href="/dashboardTest">
+                                Dashboard
                             </a>
                         </li>
                         <!-- /Navbar Login-->
 
-                        <!-- Navbar Cart Icon-->
-                        <li class="ms-1 d-inline-block position-relative dropdown-cart">
-                            <button class="nav-link me-0 disable-child-pointer border-0 p-0 bg-transparent text-body"
-                                type="button">
-                                Bag (2)
-                            </button>
-                            <div class="cart-dropdown dropdown-menu">
-
-                                <!-- Cart Header-->
-                                <div class="d-flex justify-content-between align-items-center border-bottom pt-3 pb-4">
-                                    <h6 class="fw-bolder m-0">Cart Summary (2 items)</h6>
-                                    <i class="ri-close-circle-line text-muted ri-lg cursor-pointer btn-close-cart"></i>
-                                </div>
-
-                                <div>
-
-                                    <!-- Cart Product-->
-                                    <div class="row mx-0 py-4 g-0 border-bottom">
-                                        <div class="col-2 position-relative">
-                                            <picture class="d-block ">
-                                                <img class="img-fluid" src="./assets/images/products/product-cart-1.jpg"
-                                                    alt="HTML Bootstrap Template by Pixel Rocket">
-                                            </picture>
-                                        </div>
-                                        <div class="col-9 offset-1">
-                                            <div>
-                                                <h6 class="justify-content-between d-flex align-items-start mb-2">
-                                                    Nike Air VaporMax 2021
-                                                    <i class="ri-close-line ms-3"></i>
-                                                </h6>
-                                                <span class="d-block text-muted fw-bolder text-uppercase fs-9">Size: 9 /
-                                                    Qty: 1</span>
-                                            </div>
-                                            <p class="fw-bolder text-end text-muted m-0">$85.00</p>
-                                        </div>
-                                    </div>
-                                    <!-- Cart Product-->
-                                    <div class="row mx-0 py-4 g-0 border-bottom">
-                                        <div class="col-2 position-relative">
-                                            <picture class="d-block ">
-                                                <img class="img-fluid" src="./assets/images/products/product-cart-2.jpg"
-                                                    alt="HTML Bootstrap Template by Pixel Rocket">
-                                            </picture>
-                                        </div>
-                                        <div class="col-9 offset-1">
-                                            <div>
-                                                <h6 class="justify-content-between d-flex align-items-start mb-2">
-                                                    Nike ZoomX Vaporfly
-                                                    <i class="ri-close-line ms-3"></i>
-                                                </h6>
-                                                <span class="d-block text-muted fw-bolder text-uppercase fs-9">Size: 11
-                                                    / Qty: 1</span>
-                                            </div>
-                                            <p class="fw-bolder text-end text-muted m-0">$125.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /Cart Items-->
-
-                                <!-- Cart Summary-->
-                                <div>
-                                    <div class="pt-3">
-                                        <div
-                                            class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-start mb-4 mb-md-2">
-                                            <div>
-                                                <p class="m-0 fw-bold fs-5">Grand Total</p>
-                                                <span class="text-muted small">Inc $45.89 sales tax</span>
-                                            </div>
-                                            <p class="m-0 fs-5 fw-bold">$422.99</p>
-                                        </div>
-                                    </div>
-                                    <a href="./cart.html" class="btn btn-outline-dark w-100 text-center mt-4"
-                                        role="button">View Cart</a>
-                                    <a href="./checkout.html" class="btn btn-dark w-100 text-center mt-2"
-                                        role="button">Proceed To Checkout</a>
-                                </div>
-                                <!-- / Cart Summary-->
-                            </div>
-
-
-                        </li>
-                        <!-- /Navbar Cart Icon-->
 
                     </ul>
                     <!-- Navbar Icons-->
@@ -204,179 +101,41 @@
 
                         <!-- Menu-->
                         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                            <li class="nav-item dropdown dropdown position-static">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Men
+
+                            <li class="nav-item dropdown">
+                                <a href="/clients" class="nav-link dropdown-toggle" role="button">
+                                    Gestion Clients
                                 </a>
-                                <!-- Menswear dropdown menu-->
-                                <div class="dropdown-menu dropdown-megamenu">
-                                    <div class="container-fluid">
-                                        <div class="row g-0 g-lg-3">
-                                            <!-- Menswear Dropdown Menu Links Section-->
-                                            <div class="col col-lg-8 py-lg-5">
 
-
-                                                <div
-                                                    class="align-items-center justify-content-between mt-5 d-none d-lg-flex">
-                                                    <div class="me-5 f-w-20">
-                                                        <a class="d-block" href="./category.html">
-                                                            <picture>
-                                                                <img class="img-fluid d-table mx-auto"
-                                                                    src="./assets/images/logos/logo-1.svg" alt="">
-                                                            </picture>
-                                                        </a>
-                                                    </div>
-                                                    <div class="me-5 f-w-20">
-                                                        <a class="d-block" href="./category.html">
-                                                            <picture>
-                                                                <img class="img-fluid d-table mx-auto"
-                                                                    src="./assets/images/logos/logo-2.svg" alt="">
-                                                            </picture>
-                                                        </a>
-                                                    </div>
-                                                    <div class="me-5 f-w-20">
-                                                        <a class="d-block" href="./category.html">
-                                                            <picture>
-                                                                <img class="img-fluid d-table mx-auto"
-                                                                    src="./assets/images/logos/logo-3.svg" alt="">
-                                                            </picture>
-                                                        </a>
-                                                    </div>
-                                                    <div class="me-5 f-w-20">
-                                                        <a class="d-block" href="./category.html">
-                                                            <picture>
-                                                                <img class="img-fluid d-table mx-auto"
-                                                                    src="./assets/images/logos/logo-4.svg" alt="">
-                                                            </picture>
-                                                        </a>
-                                                    </div>
-                                                    <div class="me-5 f-w-20">
-                                                        <a class="d-block" href="./category.html">
-                                                            <picture>
-                                                                <img class="img-fluid d-table mx-auto"
-                                                                    src="./assets/images/logos/logo-5.svg" alt="">
-                                                            </picture>
-                                                        </a>
-                                                    </div>
-                                                    <div class="me-5 f-w-20">
-                                                        <a class="d-block" href="./category.html">
-                                                            <picture>
-                                                                <img class="img-fluid d-table mx-auto"
-                                                                    src="./assets/images/logos/logo-6.svg" alt="">
-                                                            </picture>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /Menswear Dropdown Menu Links Section-->
-
-                                            <!-- Menswear Dropdown Menu Images Section-->
-                                            <div class="col-lg-4 d-none d-lg-block">
-                                                <div class="vw-50 border-start h-100 position-absolute"></div>
-                                                <div class="py-lg-5 position-relative z-index-10 px-lg-4">
-                                                    <div class="row g-4">
-                                                        <div class="col-12 col-md-6">
-                                                            <div
-                                                                class="card justify-content-center d-flex align-items-center bg-transparent">
-                                                                <picture class="w-100 d-block mb-2 mx-auto">
-                                                                    <img class="w-100 rounded" title=""
-                                                                        src="./assets/images/banners/banner-12.jpg"
-                                                                        alt="HTML Bootstrap Template by Pixel Rocket">
-                                                                </picture>
-                                                                <a class="fw-bolder link-cover"
-                                                                    href="./category.html">Latest Arrivals</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6">
-                                                            <div
-                                                                class="card justify-content-center d-flex align-items-center bg-transparent">
-                                                                <picture class="w-100 d-block mb-2 mx-auto">
-                                                                    <img class="w-100 rounded" title=""
-                                                                        src="./assets/images/banners/banner-13.jpg"
-                                                                        alt="HTML Bootstrap Template by Pixel Rocket">
-                                                                </picture>
-                                                                <a class="fw-bolder link-cover"
-                                                                    href="./category.html">Accessories</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6">
-                                                            <div
-                                                                class="card justify-content-center d-flex align-items-center bg-transparent">
-                                                                <picture class="w-100 d-block mb-2 mx-auto">
-                                                                    <img class="w-100 rounded" title=""
-                                                                        src="./assets/images/banners/banner-14.jpg"
-                                                                        alt="HTML Bootstrap Template by Pixel Rocket">
-                                                                </picture>
-                                                                <a class="fw-bolder link-cover"
-                                                                    href="./category.html">T-Shirts</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6">
-                                                            <div
-                                                                class="card justify-content-center d-flex align-items-center bg-transparent">
-                                                                <picture class="w-100 d-block mb-2 mx-auto">
-                                                                    <img class="w-100 rounded" title=""
-                                                                        src="./assets/images/banners/banner-15.jpg"
-                                                                        alt="HTML Bootstrap Template by Pixel Rocket">
-                                                                </picture>
-                                                                <a class="fw-bolder link-cover"
-                                                                    href="./category.html">Jackets</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="./category.html"
-                                                        class="btn btn-link p-0 fw-bolder text-link-border mt-5 text-dark mx-auto d-table">Visit
-                                                        Mens Section</a>
-                                                </div>
-                                            </div>
-                                            <!-- Menswear Dropdown Menu Images Section-->
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- / Menswear dropdown menu-->
                             </li>
+                            <li class=" nav-item">
+                                <a class="nav-link" href="/gestion_reservations" role="button">
+                                    Gestion Réservations
+                                </a>
+                            </li>
+                            <li class=" nav-item">
+                                <a class="nav-link" href="/manage_cars" role="button">
+                                    Gestion voitures
+                                </a>
+                            </li>
+
+                            {% if user.role == 'admin' %}
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    Women
+                                    Gestion Users
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="./category.html">Tops</a></li>
-                                    <li><a class="dropdown-item" href="./category.html">Bottoms</a></li>
-                                    <li><a class="dropdown-item" href="./category.html">Jeans</a></li>
-                                    <li><a class="dropdown-item" href="./category.html">T-Shirts</a></li>
-                                    <li><a class="dropdown-item" href="./category.html">Shoes</a></li>
-                                    <li><a class="dropdown-item" href="./category.html">Accessories</a></li>
+                                    <li><a class="dropdown-item" href="/admin">Admin</a></li>
+                                    <li><a class="dropdown-item" href="/manager">Manager</a></li>
+
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./category.html" role="button">
-                                    Kids
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./category.html" role="button">
-                                    Sale
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Pages
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="./index.html">Homepage</a></li>
-                                    <li><a class="dropdown-item" href="./category.html">Category</a></li>
-                                    <li><a class="dropdown-item" href="./product.html">Product</a></li>
-                                    <li><a class="dropdown-item" href="./cart.html">Cart</a></li>
-                                    <li><a class="dropdown-item" href="./checkout.html">Checkout</a></li>
-                                    <li><a class="dropdown-item" href="./login.html">Login</a></li>
-                                    <li><a class="dropdown-item" href="./register.html">Register</a></li>
-                                    <li><a class="dropdown-item" href="./forgotten-password.html">Forgotten Password</a>
-                                    </li>
-                                </ul>
-                            </li>
+                            {% endif %}
+
+
+
                         </ul> <!-- / Menu-->
 
                     </div>
@@ -396,11 +155,11 @@
         <div class="py-10 bg-img-cover bg-overlay-dark position-relative overflow-hidden bg-pos-center-center rounded-0"
             style="background-image: url(./assets/images/banners/banner-category-top.jpg);">
             <div class="container-fluid position-relative z-index-20" data-aos="fade-right" data-aos-delay="300">
-                <h1 class="fw-bold display-6 mb-4 text-white">Latest Arrivals</h1>
+
                 <div class="col-12 col-md-6">
                     <p class="text-white mb-0 fs-5">
-                        When it's time to head out and get your Kicks on, have a look at our latest arrivals. Whether
-                        you're into Nike, Adidas, Dunks or New Balance, we really have something for everyone!
+                        Découvrez la liberté de voyager avec notre service de location de voitures de premier choix
+
                     </p>
                 </div>
             </div>
@@ -414,7 +173,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Sneakers</a></li>
+                            <li class="breadcrumb-item"><a href="#">Cars</a></li>
                             <li class="breadcrumb-item active" aria-current="page">All available Cars</li>
                         </ol>
                     </nav>
@@ -424,21 +183,11 @@
                 <div class="d-flex justify-content-end align-items-center mt-4 mt-lg-0 flex-column flex-md-row">
 
                     <!-- Filter Trigger-->
-                    <button
-                        class="btn bg-light p-3 me-md-3 d-flex align-items-center fs-7 lh-1 w-100 mb-2 mb-md-0 w-md-auto "
-                        type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilters"
-                        aria-controls="offcanvasFilters">
-                        <i class="ri-equalizer-line me-2"></i> Filters
-                    </button>
+
                     <!-- / Filter Trigger-->
 
                     <!-- Sort Options-->
-                    <select class="form-select form-select-sm border-0 bg-light p-3 pe-5 lh-1 fs-7">
-                        <option selected>Sort By</option>
-                        <option value="1">Hi Low</option>
-                        <option value="2">Low Hi</option>
-                        <option value="3">Name</option>
-                    </select>
+
                     <!-- / Sort Options-->
                 </div>
             </div> <!-- /Category Toolbar-->
@@ -461,24 +210,37 @@
                                     src="{{ url_for('static', filename='images/cars/' ~ car.image) }}" alt="image">
 
                             </picture>
-                            <div class="position-absolute start-0 bottom-0 end-0 z-index-20 p-2">
-                                <button class="btn btn-quick-add"><i class="ri-add-line me-2"></i> Quick Add</button>
-                            </div>
+
                         </div>
 
                         <div class="card-body px-0">
 
-                            <a class="text-decoration-none link-cover" href="./product.html">{{ car.brand }} - {{
+                            <a class="text-decoration-none link-cover"
+                                href="{{ url_for('location_car', voiture_id=car._id) }}">{{ car.brand }} - {{
                                 car.model }}</a>
                             <small class="text-muted d-block">Matricule: {{ car.matricule }}</small>
+                            <small class="text-muted d-block">Matricule: {{ car._id }}</small>
                             <small class="text-muted d-block">Year: {{ car.year }}</small>
                             <small class="text-muted d-block">Price :{{ car.price }} MAD</small>
                             <small class="text-muted d-block">Matricule: {{ car.matricule }}</small>
 
+
                             <br>
-                            <a href="#" class="btn btn-primary rent-btn">Rent Now</a>
+                            {% if car.statut != 'accepter' %}
+                            <div class="d-flex justify-content-center">
 
+                                <a href="#" class="btn btn-primary rent-btn"
+                                    style="background-color: black; color: white;">Rent Now</a>
+                            </div>
+                            {% endif %}
+                            {% if car.statut == 'accepter' %}
+                            <div class="d-flex justify-content-center">
 
+                                <button href="#" class="btn btn-danger "
+                                    style="background-color: black; color: white;">Not
+                                    available</button>
+                            </div>
+                            {% endif %}
                         </div>
 
                     </div>

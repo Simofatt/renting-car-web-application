@@ -1,8 +1,7 @@
 from flask import redirect, render_template, url_for
 import pymongo
-
 class Cars:
-    def __init__(self, model, brand, matricule, year, price, image, id_user):
+    def __init__(self, model, brand, matricule, year, price, image, id_user, id,statut):
         self.model = model
         self.brand = brand
         self.matricule = matricule
@@ -10,10 +9,12 @@ class Cars:
         self.price = price
         self.image = image
         self.id_user = id_user
+        self.id = id
+        self.statut = statut
+
 
     @staticmethod
     def get():
-        # CONNECTION TO DB
         try:
             mongo = pymongo.MongoClient(host="localhost", port=27017, serverSelectionTimeoutMS=1000)
             db = mongo.location_voitures
@@ -26,22 +27,22 @@ class Cars:
         cars_collection = db['voiture']
         reservations_collection = db['reservation']
 
-        etat_values = ["terminer", "en_attente","refuser"]
-        car_ids = reservations_collection.distinct("voiture_id", {"statut": {"$in": etat_values}})
-
-        query = {"_id": {"$in": car_ids}}
-        result = cars_collection.find(query)
+        result = cars_collection.find()
 
         car_list = []
         for car in result:
+            reservation = reservations_collection.find_one({"voiture_id": car["_id"]})
+            statut = reservation["statut"] if reservation else None
+
             car_list.append({
+                "_id": car["_id"],
                 "model": car["modele"],
                 "brand": car["marque"],
                 "matricule": car["matricule"],
                 "year": car["annee"],
                 "price": car["prix"],
-                "image": car["image"]
-                
+                "image": car["image"],
+                "statut": statut
             })
 
         return car_list

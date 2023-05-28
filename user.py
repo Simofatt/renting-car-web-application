@@ -1,4 +1,4 @@
-from flask import redirect, render_template, url_for
+from flask import redirect, render_template,session, url_for
 import pymongo
 
 class User():
@@ -9,6 +9,31 @@ class User():
         self.lasName=lastName
         self.password = password
         self.role = role
+
+    @staticmethod
+    def get(email):
+        try:
+            mongo = pymongo.MongoClient(host="localhost", port=27017, serverSelectionTimeoutMS=1000)
+            db = mongo.location_voitures
+            mongo.server_info()
+            print("Connected to MongoDB")
+        except Exception as e:
+            print("ERROR - Cannot connect to MongoDB:", str(e))
+            return None
+
+        user = db.utilisateur.find_one({"email": email})
+        if user:
+            return User(
+                id=str(user["_id"]),
+                name=user["nom"],
+                lastName=user["prenom"],
+                email=user["email"],
+                password=user["password"],
+                role=user["role"]
+            )
+        else:
+            return None
+
 
  
     
@@ -29,6 +54,7 @@ class User():
             passwordUser = user["password"]
 
             if passwordUser == password:
+                session['role'] = user["role"]
                 # Authentication successful
                 return User(
                     id=str(user["_id"]),
