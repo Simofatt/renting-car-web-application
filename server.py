@@ -12,7 +12,7 @@ from datetime import datetime
 from pymongo import MongoClient
 
 
-
+##################################### MOHAMED FATEHI #########################################
 
 ## CONNECTION TO DB
 try : 
@@ -29,6 +29,7 @@ except :
 @app.route("/login")
 def blade() : 
     return render_template("login.html")
+
 
 #AUTHENTIFICATION 
 
@@ -105,6 +106,123 @@ def addAdmin():
         return render_template('addAdmin.html',success_message="Admin bien saisie!")
     return render_template('addAdmin.html')
     
+@app.route('/manager')
+def list_managers():
+    role = "manager"
+    managers = db.utilisateur.find({'role': role})
+    return render_template('ManagerList.html', clients=managers)
+
+
+@app.route('/deleteManager', methods=['POST'])
+def delete_manager():
+
+    manager_id = ObjectId(request.form.get('idClient'))
+    print(manager_id)
+
+    print(f"Deleting client with ID: {manager_id}")
+
+
+    result = db.utilisateur.delete_one({'_id': manager_id})
+
+    if result.deleted_count > 0:
+        return redirect(url_for('list_managers'))
+    else:
+        return 'Failed to delete the client or client not found.'
+    
+    
+@app.route('/admin')
+def list_admins():
+    role = "admin"
+    managers = db.utilisateur.find({'role': role})
+    return render_template('AdminList.html', clients=managers)
+
+
+@app.route('/deleteAdmin', methods=['POST'])
+def delete_admin():
+
+    manager_id = ObjectId(request.form.get('idClient'))
+    print(manager_id)
+
+    print(f"Deleting client with ID: {manager_id}")
+
+
+    result = db.utilisateur.delete_one({'_id': manager_id})
+
+    if result.deleted_count > 0:
+        return redirect(url_for('list_admins'))
+    else:
+        return 'Failed to delete the client or client not found.'
+
+
+@app.route('/modify_manager', methods=['POST'])
+def modify_manager():
+
+    print(request.form)  # Debugging line
+    id= ObjectId(request.form['CIN'])
+    nom = request.form['nom']
+    prenom = request.form['prenom']
+    email = request.form['email']
+    telephone = request.form['telephone']
+    ville= request.form['ville']
+
+    # Find the client with the matching CIN
+    query = {'_id': id}
+    client = db.utilisateur.find_one(query)
+
+    if client:
+        # Update the client data
+        update = {
+            '$set': {
+                'nom': nom,
+                'prenom': prenom,
+                'email': email,
+                'tel': telephone,
+                'ville': ville
+            }
+        }
+        db.utilisateur.update_one(query, update)
+
+        return redirect(url_for('list_managers'))
+    else:
+        return 'Manager not found'
+
+
+  
+@app.route('/modify_admin', methods=['POST'])
+def modify_admin():
+
+    print(request.form)  # Debugging line
+    id= ObjectId(request.form['CIN'])
+    nom = request.form['nom']
+    prenom = request.form['prenom']
+    email = request.form['email']
+    telephone = request.form['telephone']
+    ville= request.form['ville']
+
+    # Find the client with the matching CIN
+    query = {'_id': id}
+    client = db.utilisateur.find_one(query)
+
+    if client:
+        # Update the client data
+        update = {
+            '$set': {
+                'nom': nom,
+                'prenom': prenom,
+                'email': email,
+                'tel': telephone,
+                'ville': ville
+            }
+        }
+        db.utilisateur.update_one(query, update)
+
+        return redirect(url_for('list_admins'))
+    else:
+        return 'Admin not found'
+
+
+
+
 
 
 ##############################""ANAS#######################
@@ -245,57 +363,6 @@ def list_clients():
     clients = collection.find()
     return render_template('ClientList.html', clients=clients, client=None)
 
-@app.route('/manager')
-def list_managers():
-    role = "manager"
-    managers = db.utilisateur.find({'role': role})
-    return render_template('ManagerList.html', clients=managers)
-
-
-@app.route('/deleteManager', methods=['POST'])
-def delete_manager():
-
-    manager_id = ObjectId(request.form.get('idClient'))
-    print(manager_id)
-
-    print(f"Deleting client with ID: {manager_id}")
-
-
-    result = db.utilisateur.delete_one({'_id': manager_id})
-
-    if result.deleted_count > 0:
-        return redirect(url_for('list_managers'))
-    else:
-        return 'Failed to delete the client or client not found.'
-    
-    
-@app.route('/admin')
-def list_admins():
-    role = "admin"
-    managers = db.utilisateur.find({'role': role})
-    return render_template('AdminList.html', clients=managers)
-
-
-@app.route('/deleteAdmin', methods=['POST'])
-def delete_admin():
-
-    manager_id = ObjectId(request.form.get('idClient'))
-    print(manager_id)
-
-    print(f"Deleting client with ID: {manager_id}")
-
-
-    result = db.utilisateur.delete_one({'_id': manager_id})
-
-    if result.deleted_count > 0:
-        return redirect(url_for('list_admins'))
-    else:
-        return 'Failed to delete the client or client not found.'
-
-
-
-
-
 
 
 
@@ -315,71 +382,6 @@ def delete_client():
     else:
         return 'Failed to delete the client or client not found.'
     
-@app.route('/modify_manager', methods=['POST'])
-def modify_manager():
-
-    print(request.form)  # Debugging line
-    id= ObjectId(request.form['CIN'])
-    nom = request.form['nom']
-    prenom = request.form['prenom']
-    email = request.form['email']
-    telephone = request.form['telephone']
-    ville= request.form['ville']
-
-    # Find the client with the matching CIN
-    query = {'_id': id}
-    client = db.utilisateur.find_one(query)
-
-    if client:
-        # Update the client data
-        update = {
-            '$set': {
-                'nom': nom,
-                'prenom': prenom,
-                'email': email,
-                'tel': telephone,
-                'ville': ville
-            }
-        }
-        db.utilisateur.update_one(query, update)
-
-        return redirect(url_for('list_managers'))
-    else:
-        return 'Manager not found'
-
-
-  
-@app.route('/modify_admin', methods=['POST'])
-def modify_admin():
-
-    print(request.form)  # Debugging line
-    id= ObjectId(request.form['CIN'])
-    nom = request.form['nom']
-    prenom = request.form['prenom']
-    email = request.form['email']
-    telephone = request.form['telephone']
-    ville= request.form['ville']
-
-    # Find the client with the matching CIN
-    query = {'_id': id}
-    client = db.utilisateur.find_one(query)
-
-    if client:
-        # Update the client data
-        update = {
-            '$set': {
-                'nom': nom,
-                'prenom': prenom,
-                'email': email,
-                'tel': telephone,
-                'ville': ville
-            }
-        }
-        db.utilisateur.update_one(query, update)
-
-        return redirect(url_for('list_admins'))
-    else:
-        return 'Admin not found'
 
 
 
