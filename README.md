@@ -14,12 +14,12 @@ Welcome to RentingCarApp, a car rental application with a sleek front end using 
 - MongoDB installed and running
 
 ### Installation
-```bash
+```
 git clone https://github.com/your-username/RentingCarApp.git
 cd RentingCarApp
 pip install -r requirements.txt
 python app.py
-
+```
 ## Contributors
 - Mouad Zaidi
 - Ahmed Abbah
