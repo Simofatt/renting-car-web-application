@@ -25,6 +25,7 @@ python app.py
 - Ahmed Abbah
 - Anas Houat
 
+
 ## Acknowledgments
 A special thanks to our contributors for their dedication and hard work in making RentingCarApp a reality.
 
